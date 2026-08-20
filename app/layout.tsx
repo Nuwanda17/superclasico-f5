@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   title: "Superclásico F5",
   description: "La previa, los equipos y la simulación más dudosa del Superclásico entre amigos.",
   icons: { icon: "/favicon.svg", shortcut: "/favicon.svg" },
-  metadataBase: new URL(process.env.SITE_URL ?? "http://localhost:3000"),
+  metadataBase: new URL(process.env.SITE_URL ?? "https://superclasico-f5.martinezricardi24.chatgpt.site"),
   openGraph: {
     title: "Superclásico F5",
     description: "40 minutos de dudosa calidad futbolística.",
