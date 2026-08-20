@@ -1,0 +1,45 @@
+import type { Player } from "../types/player";
+
+const player = (
+  id: string,
+  name: string,
+  number: number,
+  team: "cerro" | "olimpia",
+  position: Player["preferredPosition"],
+  values: [number, number, number, number, number, number, number, number, number],
+  starter: boolean,
+  goalkeeper = false,
+): Player => ({
+  id,
+  name,
+  number,
+  team,
+  preferredPosition: position,
+  attack: values[0],
+  defense: values[1],
+  stamina: values[2],
+  finishing: values[3],
+  passing: values[4],
+  goalkeeping: values[5],
+  magic: values[6],
+  grit: values[7],
+  chaos: values[8],
+  starter,
+  goalkeeper,
+  traits: [],
+});
+
+export const DEMO_PLAYERS: Player[] = [
+  player("cerro-ricardo", "Ricardo", 10, "cerro", "MID", [4, 3, 4, 4, 5, 1, 4, 3, 2], true),
+  player("cerro-juan", "Juan", 9, "cerro", "FWD", [5, 2, 3, 5, 3, 1, 4, 3, 3], true),
+  player("cerro-diego", "Diego", 5, "cerro", "DEF", [2, 5, 4, 2, 3, 1, 2, 5, 2], true),
+  player("cerro-jose", "José", 8, "cerro", "ALL", [3, 4, 5, 3, 4, 2, 3, 5, 2], true),
+  player("cerro-carlos", "Carlos", 1, "cerro", "GK", [1, 3, 4, 1, 3, 5, 2, 4, 2], true, true),
+  player("cerro-miguel", "Miguel", 17, "cerro", "FWD", [4, 2, 2, 4, 2, 1, 5, 3, 5], false),
+  player("olimpia-pablo", "Pablo", 1, "olimpia", "GK", [1, 3, 3, 1, 2, 5, 2, 4, 3], true, true),
+  player("olimpia-andres", "Andrés", 4, "olimpia", "DEF", [2, 5, 4, 2, 4, 1, 2, 5, 2], true),
+  player("olimpia-marcos", "Marcos", 11, "olimpia", "FWD", [5, 2, 3, 5, 3, 1, 4, 3, 4], true),
+  player("olimpia-nico", "Nico", 7, "olimpia", "MID", [4, 3, 5, 3, 5, 1, 5, 3, 2], true),
+  player("olimpia-luis", "Luis", 6, "olimpia", "ALL", [3, 4, 4, 3, 3, 2, 3, 5, 3], true),
+  player("olimpia-fernando", "Fernando", 14, "olimpia", "FWD", [4, 2, 2, 4, 3, 1, 3, 2, 5], false),
+];
