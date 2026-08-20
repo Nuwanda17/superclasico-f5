@@ -4,15 +4,19 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-inter);
+  --font-display: var(--font-bebas-neue);
 }
 * { box-sizing: border-box; }
-html { background: var(--background); scroll-behavior: smooth; }
-body { margin: 0; background: var(--background); color: var(--foreground); font-family: Arial, Helvetica, sans-serif; }
+html { background: var(--background); scroll-behavior: smooth; overflow-x: clip; }
+body { margin: 0; overflow-x: clip; background: var(--background); color: var(--foreground); font-family: var(--font-inter), Arial, Helvetica, sans-serif; }
 button, input, select, textarea { font: inherit; }
 button { cursor: pointer; }
+button:disabled { cursor: not-allowed; }
+a, button, input, select, textarea { -webkit-tap-highlight-color: transparent; }
+:focus-visible { outline: 3px solid rgb(239 183 62 / 0.8); outline-offset: 3px; }
 ::selection { background: #efb73e; color: #07101f; }
+.font-display { font-family: var(--font-bebas-neue), Impact, sans-serif; letter-spacing: 0.035em; }
 
 .control {
   min-height: 2.75rem;
@@ -26,6 +30,7 @@ button { cursor: pointer; }
 }
 .control:focus { border-color: rgb(239 183 62 / 0.75); box-shadow: 0 0 0 3px rgb(239 183 62 / 0.1); }
 .attribute-slider { accent-color: #efb73e; min-height: 1.25rem; }
+.rating-slider { min-height: 2rem; accent-color: #efb73e; }
 .pitch-stripes { background: repeating-linear-gradient(90deg, rgb(255 255 255 / 0.035) 0 12.5%, transparent 12.5% 25%); }
 .stadium-glow::before { content: ""; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(circle at 50% -20%, rgb(255 255 255 / 0.08), transparent 45%); }
 .timeline-event { animation: event-enter 280ms ease-out both; }

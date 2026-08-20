@@ -2,14 +2,14 @@
 
 import { useEffect, useState } from "react";
 
-export function Countdown({ date, time }: { date: string; time: string }) {
+export function Countdown({ date = "", time = "", target }: { date?: string; time?: string; target?: string | null }) {
   const [remaining, setRemaining] = useState(0);
   useEffect(() => {
-    const update = () => setRemaining(Math.max(0, new Date(`${date}T${time || "00:00"}:00`).getTime() - Date.now()));
+    const update = () => setRemaining(Math.max(0, new Date(target ?? `${date}T${time || "00:00"}:00`).getTime() - Date.now()));
     update();
     const interval = window.setInterval(update, 30_000);
     return () => window.clearInterval(interval);
-  }, [date, time]);
+  }, [date, target, time]);
 
   const days = Math.floor(remaining / 86_400_000);
   const hours = Math.floor((remaining / 3_600_000) % 24);

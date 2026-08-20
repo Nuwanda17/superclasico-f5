@@ -12,6 +12,8 @@ export type PlayerTrait =
 
 export interface Player {
   id: string;
+  matchId?: string;
+  ownerUserId?: string | null;
   name: string;
   number?: number;
   team: Team;
@@ -24,10 +26,12 @@ export interface Player {
   goalkeeping: number;
   magic: number;
   grit: number;
+  hype?: number;
   chaos: number;
   starter: boolean;
   goalkeeper: boolean;
   traits?: PlayerTrait[];
+  ratingSummary?: import("./social").PlayerRatingSummary;
 }
 
 export const POSITION_LABELS: Record<Position, string> = {

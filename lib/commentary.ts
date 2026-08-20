@@ -1,4 +1,4 @@
-type TemplateGroup = "shot" | "error" | "save" | "goal" | "fatigue" | "argument" | "skill" | "recovery" | "post" | "card" | "blooper";
+type TemplateGroup = "shot" | "error" | "save" | "goal" | "fatigue" | "argument" | "hype" | "skill" | "recovery" | "post" | "card" | "blooper";
 
 export const COMMENTARY: Record<TemplateGroup, string[]> = {
   shot: [
@@ -104,6 +104,16 @@ export const COMMENTARY: Record<TemplateGroup, string[]> = {
     "{jugador} presenta una apelación verbal de larga duración.",
     "Se arma el comité de reclamos. {jugador} toma la palabra.",
     "{jugador} jura que fue pelota. Nadie le cree.",
+  ],
+  hype: [
+    "{jugador} pide la pelota como si estuviera jugando una final de Libertadores.",
+    "{jugador} señala tres movimientos distintos y después se queda quieto.",
+    "{jugador} reclama protagonismo. La pelota todavía no fue consultada.",
+    "{jugador} acomoda a todo el equipo con autoridad de técnico interino.",
+    "{jugador} levanta los brazos: quiere la pelota, la cámara y el relato.",
+    "{jugador} promete una jugada histórica. Empieza con un pase atrás.",
+    "{jugador} da indicaciones como si hubiera estudiado al rival toda la semana.",
+    "{jugador} ensaya una mirada épica antes de un lateral.",
   ],
   skill: [
     "{jugador} tira un lujo y, contra todo pronóstico, funciona.",

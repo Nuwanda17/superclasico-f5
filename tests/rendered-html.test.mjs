@@ -24,14 +24,18 @@ test("renders the Superclásico F5 application shell", async () => {
   assert.doesNotMatch(html, /codex-preview|Your site is taking shape/i);
 });
 
-test("keeps simulation and persistence separate from the UI", async () => {
-  const [engine, storage, commentary] = await Promise.all([
+test("keeps simulation, shared persistence and commentary separate from the UI", async () => {
+  const [engine, repository, commentary, setup] = await Promise.all([
     readFile(new URL("../lib/simulationEngine.ts", import.meta.url), "utf8"),
-    readFile(new URL("../lib/storage.ts", import.meta.url), "utf8"),
+    readFile(new URL("../lib/socialRepository.ts", import.meta.url), "utf8"),
     readFile(new URL("../lib/commentary.ts", import.meta.url), "utf8"),
+    readFile(new URL("../supabase/setup.sql", import.meta.url), "utf8"),
   ]);
   assert.match(engine, /export function simulateMatch/);
   assert.match(engine, /seededRandom/);
-  assert.match(storage, /window\.localStorage/);
+  assert.match(repository, /signInAnonymously/);
+  assert.match(repository, /postgres_changes/);
   assert.match(commentary, /COMMENTARY/);
+  assert.match(setup, /enable row level security/i);
+  assert.match(setup, /voter_user_id <>/i);
 });

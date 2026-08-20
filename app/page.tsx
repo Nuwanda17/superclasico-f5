@@ -1,5 +1,5 @@
-import { SuperclasicoApp } from "../components/SuperclasicoApp";
+import { SocialApp } from "../components/SocialApp";
 
 export default function Home() {
-  return <SuperclasicoApp />;
+  return <SocialApp slug="superclasico-f5" />;
 }

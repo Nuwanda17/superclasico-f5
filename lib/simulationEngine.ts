@@ -124,6 +124,11 @@ export function simulateMatch({ players, formations, seed = Math.floor(Date.now(
     const chaosChance = actor.chaos * 0.025;
     const roll = random();
 
+    if ((actor.hype ?? 3) >= 4 && random() < 0.055) {
+      addEvent(minute, "argument", team, commentaryLine("hype", random, { jugador: actor.name }), actor);
+      continue;
+    }
+
     if (fatigueMoment && actor.stamina <= 2 && roll < 0.13) {
       addEvent(minute, "fatigue", team, commentaryLine("fatigue", random, { jugador: actor.name }), actor);
       continue;
@@ -169,7 +174,8 @@ export function simulateMatch({ players, formations, seed = Math.floor(Date.now(
     }
     const goalkeeper = squads[opponent].find((player) => player.goalkeeper)!;
     const goalkeeperStats = getStats(stats, goalkeeper.id);
-    const goalScore = actor.finishing * 0.52 + actor.magic * 0.15 + random() * 3.3 - goalkeeper.goalkeeping * 0.47 - (fatigueMoment ? staminaPenalty : 0);
+    const unexpectedChaos = actor.chaos >= 4 && random() < 0.06 ? 0.85 : 0;
+    const goalScore = actor.finishing * 0.52 + actor.magic * 0.15 + unexpectedChaos + random() * 3.3 - goalkeeper.goalkeeping * 0.47 - (fatigueMoment ? staminaPenalty : 0);
     const lateGrit = minute >= 34 ? actor.grit * 0.09 : 0;
     if (goalScore + lateGrit > 1.8) {
       const assisterCandidates = squads[team].filter((player) => player.id !== actor.id && !player.goalkeeper);
